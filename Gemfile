@@ -30,9 +30,10 @@ gem 'jquery-rails'
 group :test do
   # Pretty printed test output
   gem 'turn', :require => false
-  gem 'cucumber-rails'
+  gem 'cucumber-rails', "~>1.0.0"
   gem 'capybara'
   gem 'database_cleaner'
+  gem 'minitest'
 end
 
 group :test, :development do
