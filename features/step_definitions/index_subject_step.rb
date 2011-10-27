@@ -9,7 +9,7 @@ end
 	click_link link_name
 end
 
-ならば /^システムは "([^"]*)" ページを表示する$/ do |arg1|
-  pending # express the regexp above with the code you wish you had
+ならば /^システムは "([^"]*)" ページを表示する$/ do |page_name|
+	page.should have_css("h2", text: page_name)
 end
 
