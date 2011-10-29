@@ -13,3 +13,7 @@ end
 	page.should have_css("h2", text: page_name)
 end
 
+ならば /^システムは "([^"]*)" のエラーメッセージを表示する$/ do |message|
+  find("#error_message").should have_content(message)
+end
+
