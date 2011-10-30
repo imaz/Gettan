@@ -1,0 +1,13 @@
+%p#notice= notice
+%p
+  %b Name:
+  = @subject.name
+%p
+  %b Credits:
+  = @subject.credits
+%p
+  %b Attendance:
+  = @subject.attendance
+= link_to 'Edit', edit_subject_path(@subject)
+|
+\#{link_to 'Back', subjects_path}

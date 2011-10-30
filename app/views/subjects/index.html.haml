@@ -1,0 +1,20 @@
+%h1 Gettan!!
+%h2 科目一覧
+%table
+  %tr
+    %th Name
+    %th Credits
+    %th Attendance
+    %th
+    %th
+    %th
+  - @subjects.each do |subject|
+    %tr
+      %td= subject.name
+      %td= subject.credits
+      %td= subject.attendance
+      %td= link_to 'Show', subject
+      %td= link_to 'Edit', edit_subject_path(subject)
+      %td= link_to 'Destroy', subject, confirm: 'Are you sure?', method: :delete
+%br/
+= link_to 'New Subject', new_subject_path
