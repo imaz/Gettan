@@ -17,3 +17,13 @@ end
   find("#error_message").should have_content(message)
 end
 
+前提 /^以下の科目情報が登録されていること:$/ do |table|
+  # table is a Cucumber::Ast::Table
+  pending # express the regexp above with the code you wish you had
+end
+
+ならば /^以下の科目情報を表示すること:$/ do |table|
+  # table is a Cucumber::Ast::Table
+  pending # express the regexp above with the code you wish you had
+end
+
