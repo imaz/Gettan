@@ -1,5 +1,10 @@
 %h1 Gettan!!
 %h2 科目一覧
+
+-if @subjects.empty?
+  %span#error_message
+    科目情報が登録されていません
+
 %table
   %tr
     %th Name
@@ -8,6 +13,7 @@
     %th
     %th
     %th
+
   - @subjects.each do |subject|
     %tr
       %td= subject.name
@@ -16,5 +22,7 @@
       %td= link_to 'Show', subject
       %td= link_to 'Edit', edit_subject_path(subject)
       %td= link_to 'Destroy', subject, confirm: 'Are you sure?', method: :delete
-%br/
+
+%br
+
 = link_to 'New Subject', new_subject_path
