@@ -18,8 +18,9 @@ end
 end
 
 前提 /^以下の科目情報が登録されていること:$/ do |table|
-  # table is a Cucumber::Ast::Table
-  pending # express the regexp above with the code you wish you had
+	table.hashes.each{|data|
+		Subject.create!(name: data["科目"], credits: data["単位"].to_i, attendance: data["最低面接時間"].to_i)
+	}
 end
 
 ならば /^以下の科目情報を表示すること:$/ do |table|
