@@ -24,7 +24,10 @@ end
 end
 
 ならば /^以下の科目情報を表示すること:$/ do |table|
-  # table is a Cucumber::Ast::Table
-  pending # express the regexp above with the code you wish you had
+	table.hashes.each{|data|
+		page.should have_content(data["科目"])
+		page.should have_content(data["単位"])
+		page.should have_content(data["最低面接時間"])
+	}
 end
 
