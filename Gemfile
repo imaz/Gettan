@@ -19,6 +19,7 @@ end
 gem 'jquery-rails'
 gem 'haml-rails'
 gem 'erb2haml'
+gem 'i18n'
 
 # Use unicorn as the web server
 # gem 'unicorn'
