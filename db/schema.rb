@@ -32,12 +32,4 @@ ActiveRecord::Schema.define(:version => 20111113081208) do
     t.datetime "updated_at"
   end
 
-  create_table "timetables", :force => true do |t|
-    t.date     "school_day"
-    t.integer  "period"
-    t.string   "subject"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
 end
