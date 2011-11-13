@@ -11,12 +11,31 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111010101359) do
+ActiveRecord::Schema.define(:version => 20111113081208) do
+
+  create_table "attendances", :force => true do |t|
+    t.integer  "school_day_id"
+    t.integer  "period"
+    t.integer  "subject_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "attendances", ["school_day_id"], :name => "index_attendances_on_school_day_id"
+  add_index "attendances", ["subject_id"], :name => "index_attendances_on_subject_id"
 
   create_table "subjects", :force => true do |t|
     t.string   "name"
     t.integer  "credits"
     t.integer  "attendance"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "timetables", :force => true do |t|
+    t.date     "school_day"
+    t.integer  "period"
+    t.string   "subject"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
