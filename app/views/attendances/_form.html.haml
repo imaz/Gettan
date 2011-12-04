@@ -1,0 +1,19 @@
+= form_for @attendance do |f|
+  -if @attendance.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@attendance.errors.count, "error")} prohibited this attendance from being saved:"
+      %ul
+        - @attendance.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :schedule
+    = f.text_field :schedule
+  .field
+    = f.label :period
+    = f.number_field :period
+  .field
+    = f.label :subject
+    = f.text_field :subject
+  .actions
+    = f.submit 'Save'
