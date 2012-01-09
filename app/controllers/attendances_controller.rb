@@ -25,6 +25,7 @@ class AttendancesController < ApplicationController
   # GET /attendances/new.json
   def new
     @attendance = Attendance.new
+    @calendars = Calendar.all
 
     respond_to do |format|
       format.html # new.html.erb

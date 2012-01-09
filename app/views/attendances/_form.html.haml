@@ -8,7 +8,7 @@
 
   .field
     = f.label :calendar
-    = f.text_field :calendar
+    = f.select :calendar_id,options_from_collection_for_select(@calendars,'id','school_day')
   .field
     = f.label :period
     = f.number_field :period
