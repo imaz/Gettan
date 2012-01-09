@@ -7,7 +7,7 @@ class CreateAttendances < ActiveRecord::Migration
 
       t.timestamps
     end
-    add_index :attendances, :calendar_id 
+    add_index :attendances, :calendar_id
     add_index :attendances, :subject_id
   end
 end

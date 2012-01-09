@@ -3,7 +3,7 @@ require 'spec_helper'
 describe "attendances/show.html.haml" do
   before(:each) do
     @attendance = assign(:attendance, stub_model(Attendance,
-      :schedule => nil,
+      :calendar => nil,
       :period => 1,
       :subject => nil
     ))

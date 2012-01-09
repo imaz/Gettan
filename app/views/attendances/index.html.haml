@@ -2,7 +2,7 @@
 
 %table
   %tr
-    %th Schedule
+    %th Calendar
     %th Period
     %th Subject
     %th
@@ -11,7 +11,7 @@
 
   - @attendances.each do |attendance|
     %tr
-      %td= attendance.schedule
+      %td= attendance.calendar
       %td= attendance.period
       %td= attendance.subject
       %td= link_to 'Show', attendance

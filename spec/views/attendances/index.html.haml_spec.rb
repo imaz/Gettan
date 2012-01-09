@@ -4,12 +4,12 @@ describe "attendances/index.html.haml" do
   before(:each) do
     assign(:attendances, [
       stub_model(Attendance,
-        :schedule => nil,
+        :calendar => nil,
         :period => 1,
         :subject => nil
       ),
       stub_model(Attendance,
-        :schedule => nil,
+        :calendar => nil,
         :period => 1,
         :subject => nil
       )
