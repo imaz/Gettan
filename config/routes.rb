@@ -1,4 +1,6 @@
 Gettan::Application.routes.draw do
+  resources :calendars
+
   resources :attendances
 
   get "welcome/index"
