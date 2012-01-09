@@ -1,4 +1,8 @@
 %h1 Gettan!!
 %p さーぼるあーそぶおーとすせつなーい 単位ー♪
 
-= link_to("科目一覧", subjects_path)
+%ul
+  %li= link_to("科目一覧", subjects_path)
+  %li= link_to("カレンダー", calendars_path)
+  %li= link_to("時間割", attendances_path)
+
