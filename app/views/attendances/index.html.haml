@@ -11,9 +11,9 @@
 
   - @attendances.each do |attendance|
     %tr
-      %td= attendance.calendar
+      %td= attendance.calendar.school_day
       %td= attendance.period
-      %td= attendance.subject
+      %td= attendance.subject.name
       %td= link_to 'Show', attendance
       %td= link_to 'Edit', edit_attendance_path(attendance)
       %td= link_to 'Destroy', attendance, :confirm => 'Are you sure?', :method => :delete

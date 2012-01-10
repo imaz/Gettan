@@ -2,13 +2,13 @@
 
 %p
   %b Calendar:
-  = @attendance.calendar
+  = @attendance.calendar.school_day
 %p
   %b Period:
   = @attendance.period
 %p
   %b Subject:
-  = @attendance.subject
+  = @attendance.subject.name
 
 = link_to 'Edit', edit_attendance_path(@attendance)
 \|
