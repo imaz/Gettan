@@ -26,6 +26,7 @@ class AttendancesController < ApplicationController
   def new
     @attendance = Attendance.new
     @calendars = Calendar.all
+    @subjects = Subject.all
 
     respond_to do |format|
       format.html # new.html.erb

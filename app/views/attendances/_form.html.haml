@@ -14,6 +14,6 @@
     = f.number_field :period
   .field
     = f.label :subject
-    = f.text_field :subject
+    = f.select :subject_id,options_from_collection_for_select(@subjects,'id','name')
   .actions
     = f.submit 'Save'
