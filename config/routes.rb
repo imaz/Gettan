@@ -3,8 +3,6 @@ Gettan::Application.routes.draw do
 
   resources :attendances
 
-  get "welcome/index"
-
   root :to => 'welcome#index'
   resources :subjects
 
