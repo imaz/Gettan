@@ -37,6 +37,8 @@ class AttendancesController < ApplicationController
   # GET /attendances/1/edit
   def edit
     @attendance = Attendance.find(params[:id])
+    @calendars = Calendar.all
+    @subjects = Subject.all
   end
 
   # POST /attendances
