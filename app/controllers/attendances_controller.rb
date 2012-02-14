@@ -3,6 +3,7 @@ class AttendancesController < ApplicationController
   # GET /attendances.json
   def index
     @attendances = Attendance.all
+    @calendars = Calendar.all
 
     respond_to do |format|
       format.html # index.html.erb

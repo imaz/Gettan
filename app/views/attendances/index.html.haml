@@ -1,22 +1,24 @@
 %h2 Listing attendances
 
-%table
+%table{border:"1"}
   %tr
-    %th Calendar
-    %th Period
-    %th Subject
     %th
-    %th
-    %th
+    %th 1
+    %th 2
+    %th 3
+    %th 4
+    %th 5
+    %th 6
 
-  - @attendances.each do |attendance|
-    %tr
-      %td= attendance.calendar.school_day
-      %td= attendance.period
-      %td= attendance.subject.name
-      %td= link_to 'Show', attendance
-      %td= link_to 'Edit', edit_attendance_path(attendance)
-      %td= link_to 'Destroy', attendance, :confirm => 'Are you sure?', :method => :delete
+  - @calendars.each_with_index do |calendar,i|
+    %tr{:class => calendar.school_day.to_s}
+      %td= calendar.school_day
+      %td.1
+      %td.2
+      %td.3
+      %td.4
+      %td.5
+      %td.6
 
 %br
 
