@@ -13,12 +13,11 @@
   - @calendars.each_with_index do |calendar,i|
     %tr{:class => calendar.school_day.to_s}
       %td= calendar.school_day
-      %td.1
-      %td.2
-      %td.3
-      %td.4
-      %td.5
-      %td.6
+      - (1..6).each do |i|
+        %td{:class => i}
+          - attendance = calendar.attendances.select {|a| a.period == i }.first
+          - if attendance
+            = attendance.subject.name
 
 %br
 
