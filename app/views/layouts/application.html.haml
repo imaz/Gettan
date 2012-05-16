@@ -6,7 +6,6 @@
     = javascript_include_tag "application"
     = csrf_meta_tags
   %body
-    %h1 Gettan
-    = yield
-    %div
-      = link_to("Top", root_path)
+    .header=render partial:"layouts/header"
+    .contents=yield
+    .footer=render partial:"layouts/footer"
