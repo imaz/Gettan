@@ -4,6 +4,7 @@ class AttendancesController < ApplicationController
   def index
     @attendances = Attendance.all
     @calendars = Calendar.all
+    @subjects = Subject.all
 
     respond_to do |format|
       format.html # index.html.erb
