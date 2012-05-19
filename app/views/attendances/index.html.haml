@@ -1,6 +1,6 @@
 %h2 時間割
 
-%table{border:"1"}
+%table{:border=>"1"}
   %tr
     -@subjects.each do |subject|
       %th= subject.name
@@ -9,7 +9,7 @@
       %td= subject.attendances.count.to_s + "/" + subject.attendance.to_s
 %br
 
-%table{border:"1"}
+%table{:border=>"1"}
   %tr
     %th
     %th 1
@@ -20,10 +20,10 @@
     %th 6
 
   - @calendars.each_with_index do |calendar,i|
-    %tr{id:calendar.school_day.to_s}
+    %tr{:id=>calendar.school_day.to_s}
       %td= calendar.school_day
       - (1..6).each do |i|
-        %td{class:i}
+        %td{:class=>i,:style=>"width:50px;height:50px;"}
           - attendance = calendar.attendances.select {|a| a.period == i }.first
           - if attendance
             = attendance.subject.name
