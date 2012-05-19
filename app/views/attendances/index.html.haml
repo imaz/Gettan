@@ -20,10 +20,10 @@
     %th 6
 
   - @calendars.each_with_index do |calendar,i|
-    %tr{:class => calendar.school_day.to_s}
+    %tr{id:calendar.school_day.to_s}
       %td= calendar.school_day
       - (1..6).each do |i|
-        %td{:class => i}
+        %td{class:i}
           - attendance = calendar.attendances.select {|a| a.period == i }.first
           - if attendance
             = attendance.subject.name
