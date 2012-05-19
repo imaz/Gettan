@@ -22,7 +22,8 @@
         %td{:class=>i}
           - attendance = calendar.attendances.select {|a| a.period == i }.first
           - if attendance
-            = attendance.subject.name
+            %div{:class=>attendance.subject.name,
+                 :style=>"border:1px solid black;"}= attendance.subject.name
 %br
 
 = link_to 'New Attendance', new_attendance_path
