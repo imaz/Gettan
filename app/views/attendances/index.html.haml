@@ -6,7 +6,7 @@
       %th= subject.name
   %tr
     -@subjects.each do |subject|
-      %td= subject.attendances.count.to_s + '/' + subject.attendance.to_s
+      %td= '%s/%s' % [subject.attendances.count,subject.attendance]
 %br
 
 %table{:border=>'1'}
