@@ -16,10 +16,10 @@
       %th{:style=>'width:50px;'}= i
 
   - @calendars.each_with_index do |calendar,i|
-    %tr{:id=>calendar.school_day.to_s,:style=>'height:50px;'}
+    %tr{:style=>'height:50px;'}
       %td= calendar.school_day
       - (1..6).each do |i|
-        %td{:class=>i}
+        %td{'data-school_day'=>calendar.school_day,'data-period'=>i}
           - attendance = calendar.attendances.select {|a| a.period == i }.first
           - if attendance
             %div{:class=>attendance.subject.name,
