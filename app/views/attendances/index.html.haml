@@ -1,29 +1,29 @@
 %h2 時間割
 
-%table{:border=>"1"}
+%table{:border=>'1'}
   %tr
     -@subjects.each do |subject|
       %th= subject.name
   %tr
     -@subjects.each do |subject|
-      %td= subject.attendances.count.to_s + "/" + subject.attendance.to_s
+      %td= subject.attendances.count.to_s + '/' + subject.attendance.to_s
 %br
 
-%table{:border=>"1"}
+%table{:border=>'1'}
   %tr
     %th
     - (1..6).each do |i|
-      %th{:style=>"width:50px;"}= i
+      %th{:style=>'width:50px;'}= i
 
   - @calendars.each_with_index do |calendar,i|
-    %tr{:id=>calendar.school_day.to_s,:style=>"height:50px;"}
+    %tr{:id=>calendar.school_day.to_s,:style=>'height:50px;'}
       %td= calendar.school_day
       - (1..6).each do |i|
         %td{:class=>i}
           - attendance = calendar.attendances.select {|a| a.period == i }.first
           - if attendance
             %div{:class=>attendance.subject.name,
-                 :style=>"border:1px solid black;"}= attendance.subject.name
+                 :style=>'border:1px solid black;'}= attendance.subject.name
 %br
 
 = link_to 'New Attendance', new_attendance_path
