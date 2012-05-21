@@ -19,13 +19,19 @@
     %tr{:style=>'height:50px;'}
       %td= calendar.school_day
       - (1..6).each do |i|
-        %td{'data-school_day'=>calendar.school_day,'data-period'=>i}
+        %td.droppable{'data-school_day'=>calendar.school_day,'data-period'=>i}
           - attendance = calendar.attendances.select {|a| a.period == i }.first
           - if attendance
             %div.draggable{:style=>'border:1px solid black;'}= attendance.subject.name
 %br
 
 :javascript
-  $('.draggable').draggable();
+  $('.draggable').draggable({
+    helper:'clone',
+  });
+  $('.droppable').droppable({
+    tolerance:'pointer',
+    drop:function(ev,ui){ui.draggable.appendTo(this);}
+  });
 
 = link_to 'New Attendance', new_attendance_path
