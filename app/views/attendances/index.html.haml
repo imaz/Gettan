@@ -22,8 +22,7 @@
         %td{'data-school_day'=>calendar.school_day,'data-period'=>i}
           - attendance = calendar.attendances.select {|a| a.period == i }.first
           - if attendance
-            %div{:class=>'draggable #{attendance.subject.name}',
-                 :style=>'border:1px solid black;'}= attendance.subject.name
+            %div.draggable{:style=>'border:1px solid black;'}= attendance.subject.name
 %br
 
 :javascript
