@@ -26,8 +26,21 @@
 %br
 
 :javascript
+  function Chip(){
+    this.school_day;
+    this.period;
+    this.set = function(lesson){
+      this.school_day = lesson.data('school_day');
+      this.period = lesson.data('period');
+    };
+    this.dragstart = function(lesson){
+      this.set(lesson);
+    };
+  }
+  var chip = new Chip();
   $('.draggable').draggable({
     helper:'clone',
+    start:function(ev,ui){chip.dragstart($(this).parent());}
   });
   $('.droppable').droppable({
     tolerance:'pointer',
