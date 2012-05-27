@@ -22,29 +22,39 @@
         %td.droppable{'data-school_day'=>calendar.school_day,'data-period'=>i}
           - attendance = calendar.attendances.select {|a| a.period == i }.first
           - if attendance
-            %div.draggable{:style=>'border:1px solid black;'}= attendance.subject.name
+            %div.draggable{'data-id'=>attendance.id,:style=>'border:1px solid black;'}= attendance.subject.name
 %br
 
 :javascript
   function Chip(){
+    this.id;
     this.school_day;
     this.period;
     this.set = function(lesson){
+      this.id = lesson.find('.draggable').data('id');
       this.school_day = lesson.data('school_day');
       this.period = lesson.data('period');
     };
-    this.dragstart = function(lesson){
+    this.drop = function(lesson){
       this.set(lesson);
+      $.ajax({
+        type: 'PUT',
+        url: '/attendances/'+this.id,
+        data: {attendance:{period:this.period},calendar:{school_day:this.school_day}},
+        dataType: 'json',
+        success: function(msg){
+          alert("success!!");
+        }
+      });
     };
   }
   var chip = new Chip();
   $('.draggable').draggable({
-    helper:'clone',
-    start:function(ev,ui){chip.dragstart($(this).parent());}
+    helper:'clone'
   });
   $('.droppable').droppable({
     tolerance:'pointer',
-    drop:function(ev,ui){ui.draggable.appendTo(this);}
+    drop:function(ev,ui){ui.draggable.appendTo(this);chip.drop($(this));}
   });
 
 = link_to 'New Attendance', new_attendance_path
