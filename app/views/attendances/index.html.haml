@@ -19,10 +19,10 @@
     %tr{:style=>'height:50px;'}
       %td= calendar.school_day
       - (1..6).each do |i|
-        %td.droppable{'data-calendar_id'=>calendar.id,'data-period'=>i}
+        %td.slot{'data-calendar_id'=>calendar.id,'data-period'=>i}
           - attendance = calendar.attendances.select {|a| a.period == i }.first
           - if attendance
-            %div.draggable{'data-id'=>attendance.id,:style=>'border:1px solid black;'}= attendance.subject.name
+            %div.chip{'data-id'=>attendance.id,:style=>'border:1px solid black;'}= attendance.subject.name
 %br
 
 :javascript
@@ -30,13 +30,13 @@
     this.id;
     this.calendar_id;
     this.period;
-    this.set = function(lesson){
-      this.id = lesson.find('.draggable').data('id');
-      this.calendar_id = lesson.data('calendar_id');
-      this.period = lesson.data('period');
+    this.set = function(slot){
+      this.id = slot.find('.chip').data('id');
+      this.calendar_id = slot.data('calendar_id');
+      this.period = slot.data('period');
     };
-    this.drop = function(lesson){
-      this.set(lesson);
+    this.drop = function(slot){
+      this.set(slot);
       $.ajax({
         type: 'PUT',
         url: '/attendances/'+this.id,
@@ -49,10 +49,10 @@
     };
   }
   var chip = new Chip();
-  $('.draggable').draggable({
+  $('.chip').draggable({
     helper:'clone'
   });
-  $('.droppable').droppable({
+  $('.slot').droppable({
     tolerance:'pointer',
     drop:function(ev,ui){ui.draggable.appendTo(this);chip.drop($(this));}
   });
