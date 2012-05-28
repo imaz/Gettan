@@ -19,7 +19,7 @@
     %tr{:style=>'height:50px;'}
       %td= calendar.school_day
       - (1..6).each do |i|
-        %td.droppable{'data-school_day'=>calendar.school_day,'data-period'=>i}
+        %td.droppable{'data-calendar_id'=>calendar.id,'data-period'=>i}
           - attendance = calendar.attendances.select {|a| a.period == i }.first
           - if attendance
             %div.draggable{'data-id'=>attendance.id,:style=>'border:1px solid black;'}= attendance.subject.name
@@ -28,11 +28,11 @@
 :javascript
   function Chip(){
     this.id;
-    this.school_day;
+    this.calendar_id;
     this.period;
     this.set = function(lesson){
       this.id = lesson.find('.draggable').data('id');
-      this.school_day = lesson.data('school_day');
+      this.calendar_id = lesson.data('calendar_id');
       this.period = lesson.data('period');
     };
     this.drop = function(lesson){
@@ -40,7 +40,7 @@
       $.ajax({
         type: 'PUT',
         url: '/attendances/'+this.id,
-        data: {attendance:{period:this.period},calendar:{school_day:this.school_day}},
+        data: {attendance:{period:this.period,calendar_id:this.calendar_id}},
         dataType: 'json',
         success: function(msg){
           alert("success!!");
