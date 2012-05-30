@@ -7,6 +7,10 @@
   %tr
     -@subjects.each do |subject|
       %td= '%s/%s' % [subject.attendances.count,subject.attendance]
+  %tr
+    -@subjects.each do |subject|
+      %td
+        %div.chip.subject= subject.name
 %br
 
 %table{:border=>'1'}
@@ -22,7 +26,7 @@
         %td.slot{'data-calendar_id'=>calendar.id,'data-period'=>i}
           - attendance = calendar.attendances.select {|a| a.period == i }.first
           - if attendance
-            %div.chip{'data-id'=>attendance.id,:style=>'border:1px solid black;'}= attendance.subject.name
+            %div.chip{'data-id'=>attendance.id}= attendance.subject.name
 %br
 
 :javascript
@@ -54,7 +58,17 @@
   });
   $('.slot').droppable({
     tolerance: 'pointer',
-    drop: function(ev,ui){ui.draggable.appendTo(this);chip.drop($(this));}
+    drop: function(ev,ui){
+      if(ui.draggable.hasClass('subject')){
+        ui.draggable.clone()
+          .removeClass('subject')
+          .draggable({helper: 'clone'})
+          .appendTo(this);
+      }else{
+        ui.draggable.appendTo(this);
+      }
+      chip.drop($(this));
+    }
   });
 
 = link_to 'New Attendance', new_attendance_path
