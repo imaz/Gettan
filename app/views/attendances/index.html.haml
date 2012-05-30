@@ -45,10 +45,7 @@
         type: 'PUT',
         url: '/attendances/'+this.id,
         data: {attendance:{period:this.period,calendar_id:this.calendar_id}},
-        dataType: 'json',
-        success: function(msg){
-          alert("success!!");
-        }
+        dataType: 'json'
       });
     };
   }
