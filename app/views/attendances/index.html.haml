@@ -50,11 +50,11 @@
   }
   var chip = new Chip();
   $('.chip').draggable({
-    helper:'clone'
+    helper: 'clone'
   });
   $('.slot').droppable({
-    tolerance:'pointer',
-    drop:function(ev,ui){ui.draggable.appendTo(this);chip.drop($(this));}
+    tolerance: 'pointer',
+    drop: function(ev,ui){ui.draggable.appendTo(this);chip.drop($(this));}
   });
 
 = link_to 'New Attendance', new_attendance_path
