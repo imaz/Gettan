@@ -30,7 +30,7 @@
 %br
 
 :javascript
-  function Chip(){
+  function Attendance(){
     this.id;
     this.subject_id;
     this.calendar_id;
@@ -63,7 +63,7 @@
       });
     };
   }
-  var chip = new Chip();
+  var attendance = new Attendance();
   $('.chip').draggable({
     helper: 'clone'
   });
@@ -75,10 +75,10 @@
           .removeClass('subject')
           .draggable({helper: 'clone'})
           .appendTo(this);
-        chip.create($(this));
+        attendance.create($(this));
       }else{
         ui.draggable.appendTo(this);
-        chip.update($(this));
+        attendance.update($(this));
       }
     }
   });
