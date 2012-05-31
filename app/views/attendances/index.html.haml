@@ -10,7 +10,7 @@
   %tr
     -@subjects.each do |subject|
       %td
-        %div.chip.subject= subject.name
+        %div.chip.subject{'data-subject_id'=>subject.id}= subject.name
 %br
 
 %table{:border=>'1'}
@@ -32,14 +32,28 @@
 :javascript
   function Chip(){
     this.id;
+    this.subject_id;
     this.calendar_id;
     this.period;
     this.set = function(slot){
       this.id = slot.find('.chip').data('id');
+      this.subject_id = slot.find('.chip').data('subject_id')
       this.calendar_id = slot.data('calendar_id');
       this.period = slot.data('period');
     };
-    this.drop = function(slot){
+    this.create = function(slot){
+      this.set(slot);
+      $.ajax({
+        type: 'POST',
+        url: '/attendances',
+        data: {attendance:{period:this.period,calendar_id:this.calendar_id,subject_id:this.subject_id}},
+        dataType: 'json',
+        success: function(data){
+          slot.find('.chip').data('id',data['id']);
+        }
+      });
+    };
+    this.update = function(slot){
       this.set(slot);
       $.ajax({
         type: 'PUT',
@@ -61,10 +75,11 @@
           .removeClass('subject')
           .draggable({helper: 'clone'})
           .appendTo(this);
+        chip.create($(this));
       }else{
         ui.draggable.appendTo(this);
+        chip.update($(this));
       }
-      chip.drop($(this));
     }
   });
 
