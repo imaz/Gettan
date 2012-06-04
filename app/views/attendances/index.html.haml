@@ -13,21 +13,23 @@
         %div.chip.subject{'data-subject_id'=>subject.id}= subject.name
 %br
 
-%table{:border=>'1'}
-  %tr
-    %th
-    - (1..6).each do |i|
-      %th{:style=>'width:50px;'}= i
-
-  - @calendars.each_with_index do |calendar,i|
-    %tr{:style=>'height:50px;'}
-      %td= calendar.school_day
+%div.timetable
+  %table{:border=>'1'}
+    %tr
+      %th
       - (1..6).each do |i|
-        %td.slot{'data-calendar_id'=>calendar.id,'data-period'=>i}
-          - attendance = calendar.attendances.select {|a| a.period == i }.first
-          - if attendance
-            %div.chip{'data-id'=>attendance.id}= attendance.subject.name
-%br
+        %th{:style=>'width:50px;'}= i
+
+    - @calendars.each_with_index do |calendar,i|
+      %tr{:style=>'height:50px;'}
+        %td= calendar.school_day
+        - (1..6).each do |i|
+          %td.slot{'data-calendar_id'=>calendar.id,'data-period'=>i}
+            - attendance = calendar.attendances.select {|a| a.period == i }.first
+            - if attendance
+              %div.chip{'data-id'=>attendance.id}= attendance.subject.name
+%div.dustbin
+%div.clear
 
 :javascript
   function Attendance(){
@@ -83,4 +85,5 @@
     }
   });
 
+%br
 = link_to 'New Attendance', new_attendance_path
