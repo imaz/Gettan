@@ -29,6 +29,7 @@
             - if attendance
               %div.chip{'data-id'=>attendance.id}= attendance.subject.name
 %div.dustbin
+  ゴミ箱
 %div.clear
 
 :javascript
@@ -64,7 +65,16 @@
         dataType: 'json'
       });
     };
+    this.destroy = function(chip){
+      $.ajax({
+        type: 'DELETE',
+        url: '/attendances/'+chip.data('id'),
+        data: {attendance:{period:this.period,calendar_id:this.calendar_id}},
+        dataType: 'json'
+      });
+    };
   }
+
   var attendance = new Attendance();
   $('.chip').draggable({
     helper: 'clone'
@@ -81,6 +91,15 @@
       }else{
         ui.draggable.appendTo(this);
         attendance.update($(this));
+      }
+    }
+  });
+  $('.dustbin').droppable({
+    tolerance: 'pointer',
+    drop: function(ev,ui){
+      if(!ui.draggable.hasClass('subject')){
+        attendance.destroy($(ui.draggable));
+        $(ui.draggable).remove();
       }
     }
   });
