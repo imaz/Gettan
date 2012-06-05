@@ -3,7 +3,7 @@ class AttendancesController < ApplicationController
   # GET /attendances.json
   def index
     @attendances = Attendance.all
-    @calendars = Calendar.find(:all,order:'school_day')
+    @calendars = Calendar.order('school_day')
     @subjects = Subject.all
 
     respond_to do |format|
