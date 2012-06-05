@@ -1,27 +1,25 @@
 %h2 時間割
 
-%table{:border=>'1'}
+%table.subjects{:border=>'1'}
   %tr
-    -@subjects.each do |subject|
-      %th= subject.name
-  %tr
-    -@subjects.each do |subject|
-      %td= '%s/%s' % [subject.attendances.count,subject.attendance]
-  %tr
-    -@subjects.each do |subject|
+    %th 科目
+    %th 面接時間
+  -@subjects.each do |subject|
+    %tr
       %td
         %div.chip.subject{'data-subject_id'=>subject.id}= subject.name
+      %td= '%s/%s' % [subject.attendances.count,subject.attendance]
 %br
 
 %div.timetable
   %table{:border=>'1'}
     %tr
-      %th
+      %th.day_row
       - (1..6).each do |i|
-        %th{:style=>'width:50px;'}= i
+        %th= i
 
     - @calendars.each_with_index do |calendar,i|
-      %tr{:style=>'height:50px;'}
+      %tr
         %td= calendar.school_day
         - (1..6).each do |i|
           %td.slot{'data-calendar_id'=>calendar.id,'data-period'=>i}

@@ -2,15 +2,41 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+$side-bar-start: 600px
+$subjects-color: #fec
+$timetable-color: #ade
+$dustbin-color: #ccc
+
+.subjects
+  position: fixed
+  top: 40px
+  margin: 5px 0 0 $side-bar-start
+  background-color: $subjects-color
 .timetable
   float: left
+  background-color: $timetable-color
+  th,td
+    width: 74px
+    height: 22px
+  .day_row
+    width: 100px
 .chip
-  border: 1px solid black
+  border: 2px solid black
+  width: 70px
+  height: auto
+  background-color: #fff
 .dustbin
   float: left
+  position: fixed
+  top: 300px
   border: 1px solid black
-  height: 50px
-  width: 50px
-  margin: 5px 0 0 5px
+  height: 120px
+  width: 120px
+  margin: 5px 0 0 $side-bar-start
+  padding: 10px
+  background-color: $dustbin-color
+  font-weight: bold
+  font-size: 24px
+  z-index: -1
 .clear
   clear: both
