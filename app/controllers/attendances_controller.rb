@@ -4,7 +4,7 @@ class AttendancesController < ApplicationController
   def index
     @attendances = Attendance.all
     @calendars = Calendar.order('school_day')
-    @subjects = Subject.all
+    @subjects = Subject.order('name')
 
     respond_to do |format|
       format.html # index.html.erb
