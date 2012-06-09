@@ -14,13 +14,13 @@
 %div.timetable
   %table{:border=>'1'}
     %tr
-      %th.day_row
+      %th
       - (1..6).each do |i|
         %th= i
 
     - @calendars.each_with_index do |calendar,i|
       %tr
-        %td= calendar.school_day
+        %td.school_day= calendar.school_day.to_datetime.to_s(:timetable)
         - (1..6).each do |i|
           %td.slot{'data-calendar_id'=>calendar.id,'data-period'=>i}
             - attendance = calendar.attendances.select {|a| a.period == i }.first
