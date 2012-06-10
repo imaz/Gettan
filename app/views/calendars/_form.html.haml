@@ -9,5 +9,8 @@
   .field
     = f.label :school_day
     = f.date_select :school_day
+    %br/
+    = f.label :memo
+    = f.text_field :memo
   .actions
     = f.submit 'Save'

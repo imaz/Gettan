@@ -26,6 +26,8 @@
             - attendance = calendar.attendances.select {|a| a.period == i }.first
             - if attendance
               %div.chip{'data-id'=>attendance.id}= attendance.subject.name
+        %td
+          %input.memo{:type=>"textfield",:value=>calendar.memo}
 %div.dustbin
   ゴミ箱
 %div.clear

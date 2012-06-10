@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120109082904) do
+ActiveRecord::Schema.define(:version => 20120109084753) do
 
   create_table "attendances", :force => true do |t|
     t.integer  "calendar_id"
@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(:version => 20120109082904) do
 
   create_table "calendars", :force => true do |t|
     t.date     "school_day"
+    t.text     "memo"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
