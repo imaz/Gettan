@@ -35,7 +35,7 @@
 
 :javascript
   $('.memo_edit').click(function(){
-    alert('a');
+    $(this).parent().append($('<input>').attr('type','text'));
   });
   function Attendance(){
     this.id;
