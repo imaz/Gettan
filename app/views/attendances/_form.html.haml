@@ -8,12 +8,12 @@
 
   .field
     = f.label :calendar
-    = f.select :calendar_id,options_from_collection_for_select(@calendars,'id','school_day')
+    = f.collection_select :calendar_id, @calendars, :id, :school_day
   .field
     = f.label :period
     = f.number_field :period
   .field
     = f.label :subject
-    = f.select :subject_id,options_from_collection_for_select(@subjects,'id','name')
+    = f.collection_select :subject_id, @subjects, :id, :name
   .actions
     = f.submit 'Save'
